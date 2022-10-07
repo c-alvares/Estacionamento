@@ -34,8 +34,10 @@ DESCRIBE vagas;
 CREATE TABLE entradas (
     id_entrada INTEGER NOT NULL AUTO_INCREMENT,
     data DATE NOT NULL,
-    horario TIME NOT NULL,
-    tempo DECIMAL NOT NULL,
+    h_entrada TIME NOT NULL,
+    h_saida TIME,
+    tempo DECIMAL,
+    valor DECIMAL(5,2),
     placa VARCHAR(7) NOT NULL,
     id_vaga VARCHAR(3) NOT NULL,
     CONSTRAINT pk_entradas PRIMARY KEY(id_entrada),
