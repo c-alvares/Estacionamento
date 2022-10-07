@@ -25,14 +25,14 @@ DESCRIBE carros;
 
 CREATE TABLE vagas (
     id_vaga VARCHAR(3) NOT NULL,
-    estatus VARCHAR(12),
+    condicao VARCHAR(12),
     CONSTRAINT pk_vagas PRIMARY KEY(id_vaga)
 );
 
 DESCRIBE vagas;
 
 CREATE TABLE entradas (
-    id_entrada VARCHAR(3) NOT NULL,
+    id_entrada INTEGER NOT NULL AUTO_INCREMENT,
     data DATE NOT NULL,
     horario TIME NOT NULL,
     tempo DECIMAL NOT NULL,
