@@ -4,9 +4,9 @@ const con = require('../DAO/estacionamento.dao');
 const criarCadastro = (req, res) => {
     con.query(Cliente.criarCliente(req.body), (err, result) => {
         if (err == null)
-            res.status(201).end();
+            res.json("Cadastrado com Sucesso").status(201).end();
         else
-            if (err.sqlState == 23000)//Se o ni já está cadastrado
+            if (err.sqlState == 23000)//Se o cpf já está cadastrado
                 res.status(406).json(err).end();
             else
                 res.status(500).json(err).end();
@@ -18,7 +18,7 @@ const listarClientes = (req, res) => {
         if (err == null)
             res.json(result).end();
         else
-            res.status(500).end();
+            res.json(err).status(500).end();
     });
 }
 
@@ -62,7 +62,7 @@ const alterarCadastro = (req, res) => {
     con.query(Cliente.atualizarCadastro(req.body), (err, result) => {
         if (err == null)
             if (result.affectedRows > 0)
-                res.status(200).end();
+                res.json("Cadastro Atualizado com Sucesso").status(200).end();
             else
                 res.status(404).end();
         else
@@ -74,7 +74,7 @@ const excluirCadastro = (req, res) => {
     con.query(Cliente.deletarCadastro(req.params), (err, result) => {
         if (err == null)
             if (result.affectedRows > 0)
-                res.status(204).end();
+                res.json("Cadastro Deletado com Sucesso").status(204).end();
             else
                 res.status(404).end();
         else

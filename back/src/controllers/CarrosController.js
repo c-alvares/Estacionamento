@@ -1,7 +1,7 @@
 const Carro = require('../models/carros.model');
 const con = require('../DAO/estacionamento.dao');
 
-const criarCarro = (req, res) => {
+const cadastrarCarro = (req, res) => {
     con.query(Carro.novoCarro(req.body), (err, result) => {
         if (err == null)
             res.status(201).end();
@@ -95,7 +95,7 @@ const excluirCadastro = (req, res) => {
 }
 
 module.exports = {
-    criarCarro,
+    cadastrarCarro,
     listarCarros,
     listarCarro,
     buscarModelo,
