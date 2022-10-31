@@ -9,15 +9,15 @@ const verificarUmCarro = (model) => {
 }
 
 const buscarPorModelo = (model) => {
-    return `SELECT * FROM carros WHERE modelo like '%'${model.modelo}'%'`;
+    return `SELECT * FROM carros WHERE modelo like '%${model.modelo}%'`;
 }
 
 const buscarPorCor = (model) => {
-    return `SELECT * FROM carros WHERE cor like '%'${model.cor}'%'`;
+    return `SELECT * FROM carros WHERE cor like '%${model.cor}%'`;
 }
 
 const buscarPorCpf = (model) => {
-    return `SELECT * FROM carros WHERE cpf like '%'${model.cpf}'%'`;
+    return `SELECT * FROM carros WHERE cpf like '%${model.cpf}%'`;
 }
 
 const atualizarCarro = (model) => {
@@ -25,7 +25,8 @@ const atualizarCarro = (model) => {
                 placa = '${model.placa}',
                 modelo = '${model.modelo}',
                 cor = '${model.cor}',
-                WHERE cpf = '${model.cpf}'`;
+                cpf = '${model.cpf}'
+                WHERE placa = '${model.placa}'`;
 }
 const deletarCarro = (model) => {
     return `DELETE FROM carros WHERE placa='${model.placa}'`;

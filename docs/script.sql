@@ -50,6 +50,9 @@ DESCRIBE entradas;
 
 
 -- DML
+
+-- SELECT * FROM clientes;
+
 -- INSERT INTO clientes VALUES
 -- "FPZ9594","ONIX","PRETO"
 -- "FMC2550","KÁ","PRETO"
@@ -57,8 +60,21 @@ DESCRIBE entradas;
 -- "EXI7A16","SANDERO","PRATA"
 -- "FMI3904","GOL","BRANCO"
 -- "EXL2260","COBALT","CINZA"
+-- SELECT * FROM carros;
 
-SELECT * FROM clientes;
-SELECT * FROM carros;
-SELECT * FROM vagas;
-SELECT * FROM entradas;
+-- INSERT INTO vagas VALUES 
+-- ("A01", "disponível"),
+-- ("A02", "disponível"),
+-- ("A03", "disponível"),
+-- ("A04", "disponível"),
+-- ("A05", "disponível"),
+-- ("A06", "disponível"),
+-- ("A07", "disponível"),
+-- ("A08", "disponível"),
+-- ("A09", "disponível"),
+-- ("A10", "disponível");
+-- SELECT * FROM vagas;
+
+
+
+-- SELECT * FROM entradas;

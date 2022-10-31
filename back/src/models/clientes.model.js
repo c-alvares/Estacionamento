@@ -9,11 +9,11 @@ const verificarUmCliente = (model) => {
 }
 
 const buscarPorNome = (model) => {
-    return `SELECT * FROM clientes WHERE nome like '%${model.nome}%'`;
+    return `SELECT * FROM clientes WHERE nome LIKE '%${model.nome}%'`;
 }
 
 const buscarPorTelefone = (model) => {
-    return `SELECT * FROM clientes WHERE telefone like '%${model.telefone}%'`;
+    return `SELECT * FROM clientes WHERE telefone LIKE '%${model.telefone}%'`;
 }
 
 const atualizarCadastro = (model) => {

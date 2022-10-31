@@ -4,7 +4,7 @@ const con = require('../DAO/estacionamento.dao');
 const cadastrarCarro = (req, res) => {
     con.query(Carro.novoCarro(req.body), (err, result) => {
         if (err == null)
-            res.status(201).end();
+            res.json("Carro Cadastrado").status(201).end();
         else
             if (err.sqlState == 23000)//Se o ni já está cadastrado
                 res.status(406).json(err).end();
@@ -66,7 +66,7 @@ const buscarCpf = (req, res) => {
             else
                 res.status(404).end();
         else
-            res.status(500).end();
+            res.json(err).status(500).end();
     });
 }
 
@@ -86,9 +86,9 @@ const excluirCadastro = (req, res) => {
     con.query(Carro.deletarCarro(req.params), (err, result) => {
         if (err == null)
             if (result.affectedRows > 0)
-                res.status(204).end();
+                res.json("Carro deletado").status(204).end();
             else
-                res.status(404).end();
+                res.json("Carro não encontrado").status(404).end();
         else
             res.status(400).json(err).end();
     });
