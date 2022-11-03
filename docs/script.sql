@@ -25,7 +25,7 @@ DESCRIBE carros;
 
 CREATE TABLE vagas (
     id_vaga VARCHAR(3) NOT NULL,
-    condicao VARCHAR(12),
+    -- condicao VARCHAR(12),
     CONSTRAINT pk_vagas PRIMARY KEY(id_vaga)
 );
 

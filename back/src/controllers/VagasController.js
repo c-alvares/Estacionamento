@@ -22,42 +22,6 @@ const listarVagas = (req, res) => {
     });
 }
 
-const verificarVagaID = (req, res) => {
-    con.query(Vaga.verificarVagaPorID(req.params), (err, result) => {
-        if (err == null)
-            if (result.length > 0)
-                res.json(result).end();
-            else
-                res.status(404).end();
-        else
-            res.status(500).end();
-    });
-}
-
-const verificarStatus = (req, res) => {
-    con.query(Vaga.verificarStatusVagas(req.params), (err, result) => {
-        if (err == null)
-            if (result.length > 0)
-                res.json(result).end();
-            else
-                res.status(404).end();
-        else
-            res.status(500).end();
-    });
-}
-
-const atualizarStatus = (req, res) => {
-    con.query(Vaga.atualizarStatus(req.body), (err, result) => {
-        if (err == null)
-            if(result.affectedRows > 0)
-                res.status(200).end();
-            else
-                res.status(404).end();
-        else
-            res.status(500).json(err).end();
-    });
-}
-
 const deletarVaga = (req, res) => {
     con.query(Vaga.deletarVaga(req.params), (err, result) => {
         if (err === null)
@@ -73,8 +37,5 @@ const deletarVaga = (req, res) => {
 module.exports = {
     criarVaga,
     listarVagas,
-    verificarVagaID,
-    verificarStatus,
-    atualizarStatus,
     deletarVaga
 }
