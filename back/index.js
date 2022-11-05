@@ -5,7 +5,6 @@ const cors = require('cors');
 
 const clientes = require('./src/routes/clientes')
 const carros = require('./src/routes/carros')
-const vagas = require('./src/routes/vagas')
 const entradas = require('./src/routes/entradas')
 
 const app = express()
@@ -13,7 +12,6 @@ const app = express()
     .use(cors())
     .use(carros)
     .use(clientes)
-    .use(vagas)
     .use(entradas)
 
 app.listen(PORT, () => {
