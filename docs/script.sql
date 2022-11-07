@@ -70,6 +70,9 @@ CREATE TRIGGER calculoTempo AFTER UPDATE entradas
 -- https://mariadb.com/kb/en/date-and-time-literals/
 -- https://mariadb.com/kb/en/built-in-functions/
 -- https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/
+-- https://mariadb.com/kb/en/last_insert_id/
+-- https://stackoverflow.com/questions/3837990/last-insert-id-mysql
+-- https://stackoverflow.com/questions/1388025/how-to-get-id-of-the-last-updated-row-in-mysql
 
 -- [
 -- 	{
