@@ -11,8 +11,13 @@ const entradasPorData = (model) => {
 }
 
 const clienteSaiu = (model) => {
-    return `UPDATE entradas SET h_saida = CURTIME() WHERE id_entrada = ${model.id_entrada};
-            UPDATE entradas SET tempo = (SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada}))) WHERE id_entrada = ${model.id_entrada};`
+    return `UPDATE entradas SET h_saida = CURTIME() WHERE id_entrada = ${model.id_entrada}`;
+  };
+
+const calculo = (model) => {
+    return `UPDATE entradas SET 
+        tempo = SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada})) 
+    WHERE id_entrada = ${model.id_entrada};`
     // CREATE TRIGGER calculoTempo AFTER UPDATE ON entradas
     //     FOR EACH ROW BEGIN
     //         UPDATE entradas SET
@@ -26,5 +31,6 @@ module.exports = {
     clienteChegou,
     listarTodasEntradas,
     entradasPorData,
-    clienteSaiu
+    clienteSaiu,
+    calculo
 }
