@@ -1,5 +1,5 @@
 const clienteChegou = (model) => {
-    return `INSERT INTO entradas VALUES (DEFAULT, CURDATE(), CURTIME(), NULL, NULL, NULL, '${model.placa}', '${model.id_vaga}')`;
+    return `INSERT INTO entradas VALUES (DEFAULT, CURDATE(), CURTIME(), NULL, NULL, NULL, '${model.placa}')`;
 }
 
 const listarTodasEntradas = () => {
@@ -11,11 +11,15 @@ const entradasPorData = (model) => {
 }
 
 const clienteSaiu = (model) => {
-    return `UPDATE entradas SET 
-                h_saida = CURTIME(),
-                tempo = (SELECT TIMEDIFF(h_saida, h_entrada) WHERE id_entrada = ${model.id_entrada}),
-                valor = ${model.valor}
-            WHERE id_entrada = ${model.id_entrada}`;
+    return `UPDATE entradas SET h_saida = CURTIME() WHERE id_entrada = ${model.id_entrada};
+            UPDATE entradas SET tempo = (SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada}))) WHERE id_entrada = ${model.id_entrada};`
+    // CREATE TRIGGER calculoTempo AFTER UPDATE ON entradas
+    //     FOR EACH ROW BEGIN
+    //         UPDATE entradas SET
+    //             tempo = (SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada})))`; 
+
+
+// valor = ${model.valor}
     
 }
 module.exports = {

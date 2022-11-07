@@ -26,7 +26,7 @@ CREATE TABLE entradas (
     data DATE NOT NULL,
     h_entrada TIME NOT NULL,
     h_saida TIME,
-    tempo DECIMAL,
+    tempo TIME,
     valor DECIMAL(5,2),
     placa VARCHAR(7) NOT NULL,
     CONSTRAINT fk_placa FOREIGN KEY(placa) REFERENCES carros(placa)
@@ -61,3 +61,11 @@ INSERT INTO entradas VALUES
 (DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,"FPZ9594");
 
 SELECT * FROM entradas;
+
+CREATE TRIGGER calculoTempo AFTER UPDATE entradas
+    BEGIN UPDATE entradas SET 
+        tempo = (SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = 1), (SELECT h_entrada FROM entradas WHERE id_entrada = 1)));
+
+-- https://stackoverflow.com/questions/31634918/how-do-i-add-a-last-modified-and-created-column-in-a-sql-server-table
+-- https://mariadb.com/kb/en/date-and-time-literals/
+-- https://mariadb.com/kb/en/built-in-functions/
