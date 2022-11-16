@@ -67,6 +67,12 @@ CREATE TRIGGER calculoTempo AFTER UPDATE entradas
     BEGIN UPDATE update entradas SET 
         tempo = (SELECT TIMEDIFF((CURTIME()), (SELECT h_entrada FROM entradas WHERE id_entrada = 2)));
         select * from entradas;
+        
+-- SELECT HOUR("838:59:59");
+-- SUM(expression)
+-- SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;
+-- https://stackoverflow.com/questions/9680144/mysql-date-time-round-to-nearest-hour
+
 
 -- https://stackoverflow.com/questions/31634918/how-do-i-add-a-last-modified-and-created-column-in-a-sql-server-table
 -- https://mariadb.com/kb/en/date-and-time-literals/
