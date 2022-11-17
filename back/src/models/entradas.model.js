@@ -1,5 +1,5 @@
 const clienteChegou = (model) => {
-    return `INSERT INTO entradas VALUES (DEFAULT, CURDATE(), CURTIME(), NULL, NULL, NULL, '${model.placa}');`;
+    return `INSERT INTO entradas VALUES (DEFAULT, CURDATE(), CURTIME(), NULL, NULL, ${model.preco_hora},NULL, '${model.placa}');`;
 }
 
 const listarTodasEntradas = () => {
