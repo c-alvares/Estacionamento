@@ -27,7 +27,7 @@ CREATE TABLE entradas (
     h_entrada TIME NOT NULL,
     h_saida TIME,
     tempo TIME,
-    preco_hora INTEGER NOT NULL,
+    preco_hora FLOAT(5,2),
     valor DECIMAL(5,2),
     placa VARCHAR(7) NOT NULL,
     CONSTRAINT fk_placa FOREIGN KEY(placa) REFERENCES carros(placa)
@@ -59,12 +59,12 @@ SELECT * FROM carros;
 
 
 INSERT INTO entradas VALUES 
-(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,7,NULL,"FPZ9594"),
-(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,7,NULL,"EXL2260");
+(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,NULL,"FPZ9594"),
+(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,NULL,"EXL2260");
 
 SELECT * FROM entradas;
 
-SELECT SUM(tempo * preco_hora) FROM entradas WHERE id_entrada = 2;
+SELECT SUM(tempo * preco_hora) FROM entradas WHERE id_entrada = 1;
 SELECT tempo FROM entradas WHERE id_entrada = 2;
 
 -- SELECT HOUR("838:59:59");
