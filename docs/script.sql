@@ -27,7 +27,6 @@ CREATE TABLE entradas (
     h_entrada TIME NOT NULL,
     h_saida TIME,
     tempo TIME,
-    preco_hora FLOAT(5,2),
     valor DECIMAL(5,2),
     placa VARCHAR(7) NOT NULL,
     CONSTRAINT fk_placa FOREIGN KEY(placa) REFERENCES carros(placa)
@@ -37,7 +36,6 @@ DESCRIBE entradas;
 
 
 -- DML
-
 INSERT INTO clientes VALUES
 ("751.217.145-22", "Travis Kelce", "(19)97136-9871"),
 ("312.643.987-21", "Trevor Allen Lawrance", "(21)99981-7890 "),
@@ -59,170 +57,17 @@ SELECT * FROM carros;
 
 
 INSERT INTO entradas VALUES 
-(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,NULL,"FPZ9594"),
-(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,NULL,"EXL2260");
+(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,"FPZ9594"),
+(DEFAULT,CURDATE(),CURTIME(),NULL,NULL,NULL,"EXL2260");
 
 SELECT * FROM entradas;
 
-SELECT SUM(tempo * preco_hora) FROM entradas WHERE id_entrada = 1;
-SELECT tempo FROM entradas WHERE id_entrada = 2;
+CREATE VIEW vw_registro AS
+SELECT e.id_entrada, cl.nome, cl.telefone, ca.placa, e.h_entrada from clientes cl
+INNER JOIN carros ca
+ON cl.cpf = ca.cpf
+INNER JOIN entradas e
+ON ca.placa = e.placa
+ORDER BY last_insert_id();
 
--- SELECT HOUR("838:59:59");
--- SUM(expression)
--- SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;
--- https://stackoverflow.com/questions/9680144/mysql-date-time-round-to-nearest-hour
-
-
--- https://stackoverflow.com/questions/31634918/how-do-i-add-a-last-modified-and-created-column-in-a-sql-server-table
--- https://mariadb.com/kb/en/date-and-time-literals/
--- https://mariadb.com/kb/en/built-in-functions/
--- https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/
--- https://mariadb.com/kb/en/last_insert_id/
--- https://stackoverflow.com/questions/3837990/last-insert-id-mysql
--- https://stackoverflow.com/questions/1388025/how-to-get-id-of-the-last-updated-row-in-mysql
-
--- [
--- 	{
--- 		"cpf": "123.456.154-12",
--- 		"nome": "Dalson Knox",
--- 		"telefone": "(22)78515-2345"
--- 	},
--- 	{
--- 		"cpf": "123.456.789-12",
--- 		"nome": "Trevor Lawrance",
--- 		"telefone": "(21)99981-7890"
--- 	},
--- 	{
--- 		"cpf": "513.412.782-85",
--- 		"nome": "Patrick Mahomes",
--- 		"telefone": "(16)95355-1135"
--- 	},
--- 	{
--- 		"cpf": "751.217.145-22",
--- 		"nome": "Travis Kelce",
--- 		"telefone": "(19)97136-9871"
--- 	}
--- ]
-
-{
-	"cpf": "123.456.789-12",
-	"nome": "Trevor Lawrance",
-	"telefone": "(21)99981-7890"		
-}
-
--- [
--- 	{
--- 		"placa": "EXI7A16",
--- 		"modelo": "Fiat Mobi",
--- 		"cor": "Branco",
--- 		"cpf": "513.412.782-85"
--- 	},
--- 	{
--- 		"placa": "EXL2260",
--- 		"modelo": "Celta",
--- 		"cor": "Azul",
--- 		"cpf": "123.456.154-12"
--- 	},
--- 	{
--- 		"placa": "FEB2060",
--- 		"modelo": "Sandero",
--- 		"cor": "Prata",
--- 		"cpf": "123.456.789-12"
--- 	},
--- 	{
--- 		"placa": "FMC2550",
--- 		"modelo": "ONIX",
--- 		"cor": "BRANCO",
--- 		"cpf": "513.412.782-85"
--- 	},
--- 	{
--- 		"placa": "FPZ9594",
--- 		"modelo": "Ford Ka",
--- 		"cor": "Vermelho",
--- 		"cpf": "123.456.789-12"
--- 	}
--- ]
-
-	{
-		"placa": "EXL2260",
-		"modelo": "COBALT",
-		"cor": "Vinho",
-		"cpf": "751.217.145-22"
-	}
-
--- [
--- 	{
--- 		"id_vaga": "A01"
--- 	},
--- 	{
--- 		"id_vaga": "A02"
--- 	},
--- 	{
--- 		"id_vaga": "A03"
--- 	},
--- 	{
--- 		"id_vaga": "A04"
--- 	},
--- 	{
--- 		"id_vaga": "A05"
--- 	}
--- ]
-
-
-
--- [
--- 	{
--- 		"id_entrada": 1,
--- 		"data": "2022-11-04T03:00:00.000Z",
--- 		"h_entrada": "08:06:10",
--- 		"h_saida": "08:35:55",
--- 		"tempo": "00:29:45",
--- 		"valor": null,
--- 		"placa": "EXL2260",
--- 		"id_vaga": "A01"
--- 	},
--- 	{
--- 		"id_entrada": 2,
--- 		"data": "2022-11-04T03:00:00.000Z",
--- 		"h_entrada": "08:06:15",
--- 		"h_saida": "08:33:03",
--- 		"tempo": "00:26:48",
--- 		"valor": null,
--- 		"placa": "FEB2060",
--- 		"id_vaga": "A02"
--- 	},
--- 	{
--- 		"id_entrada": 3,
--- 		"data": "2022-11-04T03:00:00.000Z",
--- 		"h_entrada": "08:06:17",
--- 		"h_saida": "08:24:23",
--- 		"tempo": "00:18:06",
--- 		"valor": null,
--- 		"placa": "FMC2550",
--- 		"id_vaga": "A03"
--- 	},
--- 	{
--- 		"id_entrada": 4,
--- 		"data": "2022-11-04T03:00:00.000Z",
--- 		"h_entrada": "08:49:01",
--- 		"h_saida": "08:51:48",
--- 		"tempo": "00:01:25",
--- 		"valor": null,
--- 		"placa": "EXI7A16",
--- 		"id_vaga": "A05"
--- 	},
--- 	{
--- 		"id_entrada": 5,
--- 		"data": "2022-11-04T03:00:00.000Z",
--- 		"h_entrada": "08:53:18",
--- 		"h_saida": "08:54:21",
--- 		"tempo": null,
--- 		"valor": null,
--- 		"placa": "EXL2260",
--- 		"id_vaga": "A02"
--- 	}
--- ]
-
-{
-	"id_entrada": "5"
-}
+SELECT * FROM vw_registro;

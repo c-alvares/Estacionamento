@@ -19,6 +19,15 @@ const listarEntradas = (req, res) => {
     });
 }
 
+const mostrarEntradas = (req, res) => {
+    con.query(Entrada.entradas(), (err, result) => {
+        if (err == null)
+            res.json(result).end();
+        else
+            res.status(500).end();
+    });
+}
+
 const entradasNaData = (req, res) => {
     con.query(Entrada.entradasPorData(req.params), (err, result) => {
         if (err == null)
@@ -46,6 +55,7 @@ const finalizarEntrada = (req, res) => {
 module.exports = {
     registrarEntrada,
     listarEntradas,
+    mostrarEntradas,
     entradasNaData,
     finalizarEntrada
 }

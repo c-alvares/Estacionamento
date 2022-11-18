@@ -6,6 +6,10 @@ const listarTodasEntradas = () => {
     return `SELECT * FROM  entradas;`;
 }
 
+const entradas = () => {
+    return `SELECT * FROM vw_registro;`
+}
+
 const entradasPorData = (model) => {
     return `SELECT * FROM entradas WHERE data LIKE '%${model.data}%';`;
 }
@@ -17,22 +21,11 @@ const clienteSaiu = (model) => {
     WHERE id_entrada = ${model.id_entrada};`;
   };
 
-// const calculo = (model) => {
-//     return `UPDATE entradas SET 
-//         tempo = SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada})) 
-// //     WHERE id_entrada = ${model.id_entrada};`
-    // CREATE TRIGGER calculoTempo AFTER UPDATE ON entradas
-    //     FOR EACH ROW BEGIN
-    //         UPDATE entradas SET
-    //             tempo = (SELECT TIMEDIFF((SELECT h_saida FROM entradas WHERE id_entrada = ${model.id_entrada}), (SELECT h_entrada FROM entradas WHERE id_entrada = ${model.id_entrada})))`; 
-
-
-// valor = ${model.valor}
     
-// }
 module.exports = {
     clienteChegou,
     listarTodasEntradas,
+    entradas,
     entradasPorData,
     clienteSaiu
 }

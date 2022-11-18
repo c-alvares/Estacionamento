@@ -41,7 +41,7 @@ main {
  
 }
 
-#cadastrar-cliente{
+#cadastrar-cliente, #cadastrar-carro{
     height: 6vh;
     width: 250px;
     border: none;
@@ -51,6 +51,19 @@ main {
     font-size: 20px;
     margin-left: 20px;
     margin-right: 30px;
+}
+
+.modal-cadastrar-carro{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 /.4);
+    height: 250px;
+    width: 20%;
+    margin: auto;
 }
 
 button:hover{
@@ -192,7 +205,7 @@ main{
 
 .modal-finalizar{
     visibility: hidden;
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     border: none;
@@ -223,4 +236,32 @@ main{
     overflow:scroll; 
     height: 400px;
     width: 800px;
+}
+
+
+#clientes-cadastrados{
+    visibility: hidden;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 /.4);
+    height: 800px;
+    width: 20%;
+    margin: auto;
+}
+
+
+#gerar-relatorio{
+    visibility: hidden;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 /.4);
+    height: 800px;
+    width: 60%;
+    margin: auto;
 }
