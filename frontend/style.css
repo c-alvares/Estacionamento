@@ -1,0 +1,23 @@
+/* Estilização Geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  background: #ccc;
+  display: block;
+}
+
+/* Estilização Específica */
+header {
+  height: 6.5vh;
+  color: #70d44b;
+  background: #333;
+}
+
+span {
+  color: #4ba8f8;
+}

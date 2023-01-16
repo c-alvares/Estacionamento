@@ -1,9 +1,11 @@
 const criarCliente = (model) => {
     return `INSERT INTO clientes VALUES ('${model.cpf}','${model.nome}','${model.telefone}')`;
 }
+
 const verificarClientes = () => {
     return "SELECT * FROM clientes";
 }
+
 const verificarUmCliente = (model) => {
     return `SELECT * FROM clientes WHERE cpf='${model.cpf}'`;
 }
@@ -21,6 +23,7 @@ const atualizarCadastro = (model) => {
     nome='${model.nome}', telefone='${model.telefone}' 
     WHERE cpf='${model.cpf}'`;
 }
+
 const deletarCadastro = (model) => {
     return `DELETE FROM clientes WHERE cpf='${model.cpf}'`;
 }
